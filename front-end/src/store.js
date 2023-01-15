@@ -2,5 +2,11 @@ import { reactive } from 'vue';
 
 export const store = reactive({
     ToDoAPIStore: "http://localhost/todo.php",
-    taskList: []
+    NewTaskAPIStore: "http://localhost/newtask.php",
+    taskList: [],
+    newTask: '',
+   /*  newTaskObject: {
+        text: this.newTask,
+        completed: "false"
+    }  */
 }); 

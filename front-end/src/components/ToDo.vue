@@ -19,8 +19,20 @@ export default {
           store.taskList = res.data;
           console.log(store.taskList);
         });
-
-    } 
+    },
+    addTask() {
+      console.log(store.newTask);
+      let NewTaskAPI = store.NewTaskAPIStore;
+      const params = { params: {
+        'newTodo' : NewTaskAPI
+      }};
+      axios
+        .get(NewTaskAPI, params)
+        .then(res => {
+          const data = res.data; 
+          console.log(data);
+        });
+    }  
   },
   mounted() {
     this.getJson()
@@ -35,21 +47,13 @@ export default {
       <div class="list">
         <div class="newTask" v-for="task in store.taskList ">
           <div class="newTaskText">
-            a
+            {{ task.text }}
           </div>
-        </div>
-       <!--  <div class="newTask">
-          <div class="newTaskText">
-
-          </div>
-          <button>
-          </button>
-        </div> -->
-        
+        </div> 
       </div>
       <div class="input">
-        <input id="task" type="text" name="task" placeholder="Enter task...">
-        <input id="addTask" type="submit" name="addTask">
+        <input v-model="store.newTask" id="task" type="text" name="task" placeholder="Enter task...">
+        <input id="addTask" type="submit" name="addTask" @click="addTask()">
       </div>
   </div>
 </template>
