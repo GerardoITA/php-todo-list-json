@@ -15,7 +15,10 @@ export default {
 </script>
 
 <template>
-  <ToDo></ToDo>
+  <main>
+    <ToDo></ToDo>
+  </main>
+ 
 </template>
 
 <style scoped>
