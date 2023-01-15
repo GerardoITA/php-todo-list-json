@@ -1,17 +1,31 @@
 <script>
-const todolist = "http://localhost/todo.php";
 import axios from 'axios';
+import { store } from '../store'
 
 export default {
   name: 'ToDo',
-  mounted(){
-    axios.get(todolist)
-      .then(res =>{
-        const data = res.data
-        console.log(data)
-    });
-
+  data() {
+    return {
+      store,
+      ToDoList: []
+    }
   },
+  methods: {
+    getJson() {
+      let ToDoAPI = store.ToDoAPIStore;
+      axios
+        .get(ToDoAPI)
+        .then(res => {
+          store.taskList = res.data;
+          console.log(store.taskList);
+        });
+
+    } 
+  },
+  mounted() {
+    this.getJson()
+  }
+
 }
 </script>
 
@@ -19,13 +33,18 @@ export default {
   <div class="container">
       <h1>Todo List</h1>
       <div class="list">
-        <div class="newTask">
+        <div class="newTask" v-for="task in store.taskList ">
+          <div class="newTaskText">
+            a
+          </div>
+        </div>
+       <!--  <div class="newTask">
           <div class="newTaskText">
 
           </div>
           <button>
           </button>
-        </div>
+        </div> -->
         
       </div>
       <div class="input">
