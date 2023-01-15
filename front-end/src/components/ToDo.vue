@@ -1,11 +1,11 @@
 <script>
-const APIurl = "http://localhost/api.php";
+const todolist = "http://localhost/todo.php";
 import axios from 'axios';
 
 export default {
   name: 'ToDo',
   mounted(){
-    axios.get(APIurl)
+    axios.get(todolist)
       .then(res =>{
         const data = res.data
         console.log(data)
@@ -21,7 +21,7 @@ export default {
       <div class="list">
         <div class="newTask">
           <div class="newTaskText">
-            
+
           </div>
           <button>
           </button>
