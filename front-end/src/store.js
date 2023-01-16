@@ -5,8 +5,5 @@ export const store = reactive({
     NewTaskAPIStore: "http://localhost/newtask.php",
     taskList: [],
     newTask: '',
-   /*  newTaskObject: {
-        text: this.newTask,
-        completed: "false"
-    }  */
+    newTaskObject: ''
 }); 
